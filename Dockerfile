@@ -10,6 +10,7 @@ COPY . .
 
 FROM development as production
 
+RUN npm ci --production
+
 RUN npm run build
 
-RUN npm ci --production
