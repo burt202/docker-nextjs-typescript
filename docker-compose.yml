@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ./:/usr/src/app
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    command: npm run dev
