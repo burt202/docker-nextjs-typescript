@@ -6,13 +6,13 @@ COPY package*.json .
 
 FROM base as development
 
-RUN npm ci
+RUN npm ci --ignore-scripts
 
 COPY . .
 
 FROM base as production
 
-RUN npm ci --production
+RUN npm ci --production --ignore-scripts
 
 COPY . .
 
