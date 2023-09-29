@@ -1,16 +1,19 @@
-FROM node:16-alpine as development
+FROM node:16-alpine as base
 
 WORKDIR /usr/src/app
 
 COPY package*.json .
 
+FROM base as development
+
 RUN npm ci
 
 COPY . .
 
-FROM development as production
+FROM base as production
 
 RUN npm ci --production
 
-RUN npm run build
+COPY . .
 
+RUN npm run build
